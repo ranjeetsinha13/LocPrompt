@@ -15,4 +15,14 @@
     <string name="feedback">Feedback</string>
 
     <!-- Menu Options Strings END-->
+
+    <string name="add_task_title">Add Task</string>
+    <string name="task_details">Task Details</string>
+    <string name="edit_task_title">Edit Task</string>
+
+    <!-- Permissions Strings -->
+    <string name="permission_rationale">Location permission is needed for core functionality</string>
+    <string name="permission_denied_explanation">Permission was denied, but is needed for core
+        functionality.</string>
+    <string name="ok">OK</string>
 </resources>

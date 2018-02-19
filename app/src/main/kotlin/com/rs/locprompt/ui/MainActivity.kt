@@ -1,24 +1,79 @@
 package com.rs.locprompt.ui
 
+import android.Manifest
+import android.annotation.TargetApi
+import android.content.Intent
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.provider.Settings
 import android.support.design.widget.NavigationView
+import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
-import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.MenuItem
+import com.journaler.permission.PermissionRequestCallback
 import com.rs.locprompt.R
 import com.rs.locprompt.ui.fragments.AllTasksFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+
+class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
+
+
+    override val TAG: String = MainActivity::class.java.name
+
+    override fun getLayout(): Int = R.layout.activity_main
+
+    override fun getActivityTitle(): Int = R.string.app_name
+
+    private val permissionRequestCallback = object : PermissionRequestCallback {
+        override fun onPermissionGranted(permissions: List<String>) {
+            Log.i(TAG, "Permission granted [ $permissions ]")
+        }
+
+        @TargetApi(Build.VERSION_CODES.M)
+        override fun onPermissionDenied(permissions: List<String>) {
+            Log.e(TAG, "Permission denied [ $permissions ]")
+
+            if (shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION)) {
+                // Show Rationale
+                Log.i(TAG, "Displaying permission rationale to provide additional context.")
+                Snackbar.make(findViewById(android.R.id.content), getString(R.string.permission_rationale),
+                        Snackbar.LENGTH_INDEFINITE).setAction(R.string.ok, {
+                    requestPermissions(Manifest.permission.ACCESS_FINE_LOCATION, callback =
+                    this)
+                }).show()
+            } else {
+                Snackbar.make(findViewById(android.R.id.content),
+                        getText(R.string.permission_denied_explanation),
+                        Snackbar.LENGTH_INDEFINITE)
+                        .setAction(resources.getString(R.string.settings), {
+                            val intent = Intent()
+                            intent.action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
+                            val uri = Uri.fromParts("package", packageName, null)
+                            intent.data = uri
+                            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK;
+                            startActivity(intent)
+                        }).show()
+
+
+            }
+
+
+        }
+    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        setSupportActionBar(toolbar)
+
+        // Request Needed Permissions;
+        requestPermissions(Manifest.permission.ACCESS_COARSE_LOCATION,
+                Manifest.permission.ACCESS_FINE_LOCATION, callback = permissionRequestCallback)
 
         // Set initial Fragment;
         setHomeFragment()
@@ -30,6 +85,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         nav_view.setNavigationItemSelectedListener(this)
     }
+
 
     override fun onBackPressed() {
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
