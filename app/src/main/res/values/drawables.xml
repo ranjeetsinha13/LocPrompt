@@ -1,0 +1,7 @@
+<resources>
+    <item name="ic_menu_home" type="drawable">@drawable/ic_list</item>
+    <item name="ic_menu_settings" type="drawable">@drawable/ic_settings</item>
+    <item name="ic_menu_about" type="drawable">@drawable/ic_about</item>
+    <item name="ic_menu_share" type="drawable">@drawable/ic_share</item>
+    <item name="ic_menu_feedback" type="drawable">@drawable/ic_feedback</item>
+</resources>

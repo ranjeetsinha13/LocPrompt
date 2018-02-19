@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">LocPrompt</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="version_number">Version 1.0</string>
+
+    <!-- Menu Options Strings START-->
+
+    <string name="home">All Tasks</string>
+    <string name="settings">Settings</string>
+    <string name="about">About</string>
+    <string name="share">Share</string>
+    <string name="feedback">Feedback</string>
+
+    <!-- Menu Options Strings END-->
+</resources>
