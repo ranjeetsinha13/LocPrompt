@@ -52,8 +52,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                         getText(R.string.permission_denied_explanation),
                         Snackbar.LENGTH_INDEFINITE)
                         .setAction(resources.getString(R.string.settings), {
-                            val intent = Intent()
-                            intent.action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
+                            val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
                             val uri = Uri.fromParts("package", packageName, null)
                             intent.data = uri
                             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK;

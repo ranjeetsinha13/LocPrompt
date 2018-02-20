@@ -19,10 +19,20 @@
     <string name="add_task_title">Add Task</string>
     <string name="task_details">Task Details</string>
     <string name="edit_task_title">Edit Task</string>
+    <string name="add_location_title">Add Location</string>
+    <string name="set_time_title">Set Date &amp; Time</string>
+    <string name="date">DATE</string>
+    <string name="time">TIME</string>
+
+    <string name="hint_search_location">Search Location</string>
 
     <!-- Permissions Strings -->
     <string name="permission_rationale">Location permission is needed for core functionality</string>
     <string name="permission_denied_explanation">Permission was denied, but is needed for core
         functionality.</string>
     <string name="ok">OK</string>
+
+    <!--buttons strings-->
+    <string name="add_button">Add</string>
+    <string name="cancel_button">Cancel</string>
 </resources>

@@ -7,11 +7,13 @@ android {
     compileSdkVersion 27
     defaultConfig {
         applicationId "com.rs.locprompt"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+
 
     }
     dataBinding.enabled = true
@@ -31,6 +33,7 @@ android {
 
 
 dependencies {
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
@@ -47,6 +50,10 @@ dependencies {
 
     implementation "io.reactivex.rxjava2:rxjava:$rx_version"
 
+    implementation "com.google.android.gms:play-services-maps:$google_lib_version"
+    implementation "com.google.android.gms:play-services-places:$google_lib_version"
+    implementation "com.google.android.gms:play-services-location:$google_lib_version"
+
     //Kapt
     kapt "com.android.databinding:compiler:$android_tools_version"
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
@@ -54,8 +61,13 @@ dependencies {
     kapt "android.arch.lifecycle:compiler:$arch_version"
     kapt "android.arch.persistence.room:compiler:$arch_version"
 
-
     // Others
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+
+    //implementation "com.github.ashishbhandari:AndroidTabbedDialog:1.1"
+    implementation "com.afollestad.material-dialogs:commons:0.9.6.0"
+    implementation 'com.github.ugurtekbas:dialTimePicker:8d263fc3a1'
+
+    compile(name: 'tabbed_dialog', ext: 'aar')
 
 }

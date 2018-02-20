@@ -10,11 +10,13 @@ import android.arch.persistence.room.PrimaryKey
 
 @Entity(tableName = "reminders")
 data class Reminder(@PrimaryKey var reminderId: String = "",
-                    var reminderTitle: String = "",
-                    var reminderDetails: String = "",
+                    var reminderDesc: String = "",
+                    var time: String = "",
+                    var repeatValue: Int,
                     var status: Int = 0,
                     var latitude: Double,
                     var longitude: Double,
-                    var radius: Double)
+                    var radius: Double,
+                    var locationAddress: String)
 
 

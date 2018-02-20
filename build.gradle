@@ -8,6 +8,7 @@ buildscript {
     ext.rx_version = '2.1.6'
     ext.android_tools_version = '3.0.1'
     ext.android_lib_version = '27.0.2'
+    ext.google_lib_version = '11.8.0'
     repositories {
         google()
         jcenter()
@@ -25,6 +26,12 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven { url "https://jitpack.io" }
+
+        // In case you include aar files in your project;
+        flatDir {
+            dirs 'libs'
+        }
     }
 }
 
